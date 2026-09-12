@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Studio Linda's — especialista em loiras, cor, tratamentos e beleza personalizada. Agende seu horário online.">
+<title>Studio Linda's | Especialista em Loiras</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Italiana&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#f5f1eb;
+  --paper:#fffdf9;
+  --paper-2:#efe7dc;
+  --ink:#18130f;
+  --text:#3a322c;
+  --muted:#7d7268;
+  --champagne:#b98b57;
+  --champagne-soft:#e8d7c2;
+  --line:rgba(24,19,15,.10);
+  --shadow:0 30px 90px rgba(47,30,18,.12);
+  --radius:30px;
+  --max:1200px;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 6% 6%,rgba(185,139,87,.08),transparent 28%),
+    radial-gradient(circle at 95% 32%,rgba(185,139,87,.06),transparent 24%),
+    var(--bg);
+  font-family:"DM Sans",sans-serif;
+  overflow-x:hidden;
+}
+body.lock{overflow:hidden}
+a{text-decoration:none;color:inherit}
+img{display:block;width:100%;height:100%;object-fit:cover}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+h1,h2,h3,h4{font-family:"Italiana",serif;color:var(--ink);font-weight:400}
+section{scroll-margin-top:88px}
+
+.wrap{width:min(calc(100% - 40px),var(--max));margin:auto}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  color:var(--champagne);font-size:11px;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase
+}
+.eyebrow:before{content:"";width:24px;height:1px;background:currentColor}
+.btn{
+  min-height:50px;padding:0 21px;border-radius:999px;
+  border:1px solid var(--line);display:inline-flex;align-items:center;justify-content:center;
+  gap:9px;font-size:13px;font-weight:700;transition:.22s ease
+}
+.btn:hover{transform:translateY(-2px)}
+.btn-dark{background:var(--ink);color:white;border-color:var(--ink);box-shadow:0 14px 30px rgba(24,19,15,.16)}
+.btn-light{background:rgba(255,255,255,.92);color:var(--ink)}
+.btn-gold{background:var(--champagne);color:white;border-color:var(--champagne)}
+.reveal{opacity:0;transform:translateY(16px);transition:.65s cubic-bezier(.2,.7,.2,1)}
+.reveal.show{opacity:1;transform:none}
+
+/* HEADER */
+header{
+  position:fixed;inset:0 0 auto;z-index:1000;
+  transition:.25s ease
+}
+header.scrolled{
+  background:rgba(245,241,235,.88);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--line)
+}
+.nav{height:82px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:11px}
+.brand-mark{
+  width:42px;height:42px;border-radius:50%;
+  display:grid;place-items:center;border:1px solid rgba(185,139,87,.55);
+  color:var(--champagne);font-family:"Italiana",serif;font-size:17px;
+  background:rgba(255,255,255,.5)
+}
+.brand-name{font-family:"Italiana",serif;font-size:21px;color:var(--ink)}
+.nav-links{display:flex;align-items:center;gap:25px;font-size:13px;font-weight:600}
+.nav-actions{display:flex;align-items:center;gap:8px}
+.menu-btn{display:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:white}
+.mobile-menu{
+  display:none;position:fixed;top:82px;left:0;right:0;z-index:999;
+  background:rgba(245,241,235,.98);backdrop-filter:blur(18px);
+  padding:16px 20px 24px;border-bottom:1px solid var(--line)
+}
+.mobile-menu.open{display:block}
+.mobile-menu a{display:block;padding:12px 2px;border-bottom:1px solid var(--line);font-weight:700}
+.mobile-menu .btn{width:100%;margin-top:14px}
+
+/* HERO */
+.hero{padding:120px 0 54px}
+.hero-grid{
+  min-height:calc(100vh - 174px);
+  display:grid;grid-template-columns:.92fr 1.08fr;gap:24px;align-items:stretch
+}
+.hero-copy{
+  border-radius:36px;
+  background:linear-gradient(145deg,#1d1713,#0f0c0a);
+  color:white;padding:66px;display:flex;flex-direction:column;justify-content:center;
+  position:relative;overflow:hidden
+}
+.hero-copy:before{
+  content:"";position:absolute;right:-80px;top:-90px;width:270px;height:270px;border-radius:50%;
+  background:radial-gradient(circle,rgba(185,139,87,.22),transparent 68%)
+}
+.hero-copy .eyebrow{color:#e2c29b}
+.hero-copy h1{
+  color:white;font-size:clamp(60px,7.4vw,105px);line-height:.88;
+  letter-spacing:-.045em;margin:17px 0 22px
+}
+.hero-copy h1 em{display:block;font-style:normal;color:#e0bd92}
+.hero-copy p{
+  max-width:570px;color:#d9cfc6;line-height:1.78;font-size:16px;margin:0
+}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:29px}
+.hero-proof{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:33px
+}
+.proof{
+  border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.035);
+  border-radius:16px;padding:14px
+}
+.proof strong{display:block;color:white;font-size:13px;margin-bottom:4px}
+.proof span{font-size:11px;color:#a99d95}
+.hero-media{
+  border-radius:36px;overflow:hidden;position:relative;min-height:670px;
+  box-shadow:var(--shadow)
+}
+.hero-media:after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(0deg,rgba(18,13,10,.28),transparent 50%)
+}
+.hero-media img{object-position:center 34%}
+.hero-note{
+  position:absolute;z-index:2;left:24px;right:24px;bottom:24px;
+  background:rgba(255,255,255,.88);backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.4);border-radius:18px;padding:15px 17px
+}
+.hero-note strong{display:block;color:var(--ink);font-size:13px}
+.hero-note span{font-size:11px;color:var(--muted)}
+
+/* INTRO */
+.section{padding:100px 0}
+.intro-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:70px;align-items:center}
+.intro-photo{height:610px;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.copy h2,.head h2,.booking-copy h2,.contact-copy h2{
+  font-size:clamp(40px,5vw,68px);line-height:.98;letter-spacing:-.035em;
+  margin:13px 0 22px
+}
+.copy p,.head p,.booking-copy p,.contact-copy p{
+  color:var(--muted);line-height:1.82
+}
+.signature{
+  margin-top:22px;padding-top:20px;border-top:1px solid var(--line);
+  display:flex;align-items:center;gap:13px
+}
+.signature-mark{
+  width:42px;height:42px;border-radius:50%;display:grid;place-items:center;
+  background:var(--ink);color:white;font-family:"Italiana",serif
+}
+.signature strong{display:block;color:var(--ink);font-size:13px}
+.signature span{font-size:11px;color:var(--muted)}
+
+/* SERVICES */
+.services{background:var(--paper);border-block:1px solid var(--line)}
+.head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:40px}
+.head p{max-width:490px;margin:0}
+.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.service{
+  background:white;border:1px solid var(--line);border-radius:22px;
+  overflow:hidden;transition:.22s ease
+}
+.service:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.service-media{height:260px;overflow:hidden}
+.service-media img{transition:.45s ease}
+.service:hover img{transform:scale(1.04)}
+.service-body{padding:18px}
+.service h3{font-size:25px;margin:0 0 6px}
+.service p{font-size:12px;line-height:1.62;color:var(--muted);margin:0;min-height:58px}
+.service button{
+  margin-top:15px;border:0;background:none;padding:0;color:var(--champagne);
+  font-weight:700;font-size:12px
+}
+
+/* EDITORIAL FEATURE */
+.feature{
+  width:min(calc(100% - 40px),var(--max));
+  margin:24px auto 0;min-height:560px;border-radius:38px;overflow:hidden;position:relative;
+  background:
+    linear-gradient(90deg,rgba(20,15,12,.88),rgba(20,15,12,.36) 58%,rgba(20,15,12,.05)),
+    url("https://images.unsplash.com/photo-1522336572468-97b06e8ef143?auto=format&fit=crop&w=1900&q=90") center/cover;
+  box-shadow:var(--shadow)
+}
+.feature-content{padding:76px;max-width:660px;color:white}
+.feature-content h2{
+  color:white;font-size:clamp(45px,6vw,80px);line-height:.94;margin:14px 0 18px
+}
+.feature-content p{color:#e7dcd3;line-height:1.75;max-width:520px}
+
+/* PROCESS */
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.step{background:white;border:1px solid var(--line);border-radius:20px;padding:22px}
+.step-number{
+  width:38px;height:38px;border-radius:50%;display:grid;place-items:center;
+  background:var(--ink);color:white;font-size:12px;font-weight:800;margin-bottom:16px
+}
+.step h3{font-size:24px;margin:0 0 6px}
+.step p{font-size:12px;line-height:1.65;color:var(--muted);margin:0}
+
+/* GALLERY */
+.gallery{
+  display:grid;grid-template-columns:1.2fr .8fr .8fr;
+  grid-template-rows:300px 300px;gap:12px
+}
+.gallery-item{border-radius:20px;overflow:hidden;position:relative}
+.gallery-item:first-child{grid-row:1/3}
+.gallery-item img{transition:.5s ease}
+.gallery-item:hover img{transform:scale(1.04)}
+.gallery-label{
+  position:absolute;left:14px;bottom:14px;background:rgba(255,255,255,.88);
+  backdrop-filter:blur(10px);padding:8px 10px;border-radius:999px;
+  font-size:10px;font-weight:800;color:var(--ink)
+}
+
+/* BOOKING */
+.booking{background:var(--ink);color:white}
+.booking-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;align-items:center}
+.booking .eyebrow{color:#d8b58a}
+.booking-copy h2{color:white}
+.booking-copy p{color:#c5b9b0}
+.booking-mini{
+  margin-top:25px;display:grid;grid-template-columns:1fr 1fr;gap:10px
+}
+.booking-mini div{
+  border:1px solid rgba(255,255,255,.10);border-radius:16px;padding:14px;
+  background:rgba(255,255,255,.035)
+}
+.booking-mini strong{display:block;color:white;font-size:13px;margin-bottom:3px}
+.booking-mini span{font-size:11px;color:#aa9e96}
+.booking-card{
+  background:white;color:var(--text);border-radius:28px;padding:28px;
+  box-shadow:0 30px 80px rgba(0,0,0,.18)
+}
+.booking-card h3{font-size:31px;margin:0 0 8px}
+.booking-card > p{margin:0 0 20px;color:var(--muted);font-size:13px}
+.field{margin-bottom:14px}
+.field label{
+  display:block;font-size:10px;font-weight:800;letter-spacing:.09em;
+  text-transform:uppercase;color:#66584e;margin-bottom:7px
+}
+.input,.select{
+  width:100%;min-height:49px;border-radius:14px;border:1px solid var(--line);
+  background:white;padding:0 14px;outline:none;color:var(--ink)
+}
+.input:focus,.select:focus{border-color:var(--champagne)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.note{font-size:10px;line-height:1.55;color:var(--muted);margin-top:10px}
+
+/* CONTACT */
+.contact-grid{
+  display:grid;grid-template-columns:.9fr 1.1fr;background:white;
+  border:1px solid var(--line);border-radius:30px;overflow:hidden;box-shadow:var(--shadow)
+}
+.contact-copy{padding:39px}
+.contact-row{padding:14px 0;border-bottom:1px solid var(--line)}
+.contact-row small{display:block;color:var(--muted);margin-bottom:4px}
+.map{
+  min-height:480px;position:relative;
+  background:
+    linear-gradient(rgba(185,139,87,.06),rgba(185,139,87,.06)),
+    url("https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=1500&q=85") center/cover
+}
+.map-pin{
+  position:absolute;left:52%;top:48%;width:62px;height:62px;border-radius:50% 50% 50% 0;
+  background:var(--ink);transform:translate(-50%,-50%) rotate(-45deg)
+}
+.map-pin:after{
+  content:"";position:absolute;width:17px;height:17px;border-radius:50%;
+  background:white;left:22px;top:22px
+}
+
+/* FOOTER */
+footer{background:#100c0a;color:white;padding:46px 0 24px}
+.footer-grid{display:grid;grid-template-columns:1.3fr repeat(3,.7fr);gap:26px}
+.footer-grid p,.footer-grid a,.footer-grid span{
+  color:#a99c92;font-size:12px;line-height:1.7
+}
+.footer-grid a,.footer-grid span{display:block;margin:8px 0}
+.footer-grid h4{font-family:"DM Sans",sans-serif;font-size:13px;margin:0 0 13px;color:white}
+.footer-bottom{
+  text-align:center;border-top:1px solid rgba(255,255,255,.08);
+  padding-top:19px;margin-top:32px;font-size:11px;color:#756a63
+}
+.float-wa{
+  position:fixed;right:20px;bottom:20px;width:58px;height:58px;border-radius:50%;
+  display:grid;place-items:center;background:#25d366;color:white;font-size:23px;
+  z-index:1200;box-shadow:0 14px 34px rgba(37,211,102,.28)
+}
+
+/* MODAL */
+.modal{
+  position:fixed;inset:0;z-index:2000;background:rgba(11,8,7,.67);
+  backdrop-filter:blur(7px);display:none;align-items:center;justify-content:center;padding:18px
+}
+.modal.open{display:flex}
+.modal-card{
+  width:min(640px,100%);max-height:92vh;overflow:auto;background:var(--bg);
+  border-radius:28px;padding:26px;box-shadow:0 40px 100px rgba(0,0,0,.36)
+}
+.modal-head{display:flex;justify-content:space-between;gap:20px;align-items:start;margin-bottom:18px}
+.modal-head h3{font-size:35px;margin:0}
+.close{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:white}
+.days{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.day,.slot{
+  border:1px solid var(--line);background:white;border-radius:13px;
+  padding:10px 5px;text-align:center
+}
+.day.active{background:var(--ink);color:white;border-color:var(--ink)}
+.day small{display:block;font-size:9px;text-transform:uppercase;opacity:.65}
+.day strong{display:block;font-size:14px;margin-top:3px}
+.slots{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.slot.active{background:var(--champagne);color:white;border-color:var(--champagne)}
+.summary{
+  background:var(--paper-2);border-radius:15px;padding:14px;margin:14px 0;
+  font-size:12px;line-height:1.65
+}
+
+@media(max-width:1020px){
+  .nav-links{display:none}.menu-btn{display:grid}.nav-actions>.btn{display:none}
+  .hero-grid,.intro-grid,.booking-grid,.contact-grid{grid-template-columns:1fr}
+  .hero-media{min-height:620px}
+  .services-grid,.process-grid{grid-template-columns:1fr 1fr}
+  .gallery{grid-template-columns:1fr 1fr;grid-template-rows:330px 230px 230px}
+  .gallery-item:first-child{grid-column:1/3;grid-row:auto}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:680px){
+  .wrap{width:min(calc(100% - 24px),var(--max))}
+  .nav{height:70px}.mobile-menu{top:70px}
+  .hero{padding:92px 0 22px}
+  .hero-grid{min-height:auto}
+  .hero-copy{padding:38px 24px;border-radius:28px}
+  .hero-copy h1{font-size:57px}
+  .hero-media{min-height:470px;border-radius:28px}
+  .hero-proof{grid-template-columns:1fr}
+  .section{padding:72px 0}
+  .intro-grid{gap:36px}.intro-photo{height:430px}
+  .services-grid,.process-grid{grid-template-columns:1fr}
+  .head{align-items:start;flex-direction:column}
+  .feature{width:calc(100% - 24px);min-height:510px;border-radius:28px;background-position:61% center}
+  .feature-content{padding:36px 23px;position:absolute;bottom:0}
+  .gallery{grid-template-columns:1fr;grid-template-rows:320px repeat(4,220px)}
+  .gallery-item:first-child{grid-column:auto}
+  .booking-mini{grid-template-columns:1fr}
+  .two{grid-template-columns:1fr}
+  .days{grid-template-columns:repeat(3,1fr)}
+  .slots{grid-template-columns:repeat(3,1fr)}
+  .booking-card,.modal-card{padding:20px}
+  .contact-copy{padding:27px}.map{min-height:360px}
+  .footer-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<header id="header">
+  <div class="wrap nav">
+    <a href="#inicio" class="brand">
+      <span class="brand-mark">SL</span>
+      <span class="brand-name" data-brand>Studio Linda's</span>
+    </a>
+
+    <nav class="nav-links">
+      <a href="#sobre">Sobre</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#resultados">Resultados</a>
+      <a href="#agendamento">Agendamento</a>
+      <a href="#contato">Contato</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="btn btn-dark js-open-booking">AGENDAR HORÁRIO</button>
+      <button class="menu-btn" id="menuBtn" aria-label="Abrir menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#sobre">Sobre</a>
+  <a href="#servicos">Serviços</a>
+  <a href="#resultados">Resultados</a>
+  <a href="#agendamento">Agendamento</a>
+  <a href="#contato">Contato</a>
+  <button class="btn btn-dark js-open-booking">AGENDAR HORÁRIO</button>
+</div>
+
+<main>
+<section class="hero" id="inicio">
+  <div class="wrap hero-grid">
+    <div class="hero-copy reveal">
+      <span class="eyebrow">Especialista em loiras</span>
+      <h1>LOIROS COM <em>IDENTIDADE.</em></h1>
+      <p>Cor, técnica e cuidado em um atendimento pensado para valorizar cada detalhe do seu cabelo.</p>
+
+      <div class="hero-actions">
+        <button class="btn btn-light js-open-booking">AGENDAR HORÁRIO →</button>
+        <a class="btn btn-light" href="#resultados">VER RESULTADOS</a>
+      </div>
+
+      <div class="hero-proof">
+        <div class="proof"><strong>Especialista em loiras</strong><span>Planejamento de cor personalizado.</span></div>
+        <div class="proof"><strong>Cuidado com os fios</strong><span>Resultado bonito e manutenção consciente.</span></div>
+        <div class="proof"><strong>Agendamento fácil</strong><span>Solicite seu horário pelo site.</span></div>
+      </div>
+    </div>
+
+    <div class="hero-media reveal">
+      <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=1500&q=90" alt="Resultado de cabelo loiro">
+      <div class="hero-note">
+        <strong>Studio Linda's</strong>
+        <span>Especialista em loiras • atendimento personalizado</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="sobre">
+  <div class="wrap intro-grid">
+    <div class="intro-photo reveal">
+      <img src="https://images.unsplash.com/photo-1522336572468-97b06e8ef143?auto=format&fit=crop&w=1300&q=88" alt="Atendimento em salão de beleza">
+    </div>
+
+    <div class="copy reveal">
+      <span class="eyebrow">Sobre o Studio</span>
+      <h2>Beleza que respeita a sua essência.</h2>
+      <p>No Studio Linda's, cada transformação começa entendendo o cabelo, o estilo e o resultado que a cliente deseja.</p>
+      <p>O foco está em loiros, iluminação, tratamentos e finalizações com um atendimento próximo e personalizado.</p>
+
+      <div class="signature">
+        <div class="signature-mark">SL</div>
+        <div>
+          <strong>Studio Linda's</strong>
+          <span>Especialista em loiras e transformação de cor</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section services" id="servicos">
+  <div class="wrap">
+    <div class="head reveal">
+      <div>
+        <span class="eyebrow">Serviços</span>
+        <h2>Escolha sua próxima transformação.</h2>
+      </div>
+      <p>Um atendimento pensado de forma individual, com técnica, cuidado e atenção ao resultado.</p>
+    </div>
+
+    <div class="services-grid">
+      <article class="service reveal">
+        <div class="service-media">
+          <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=900&q=88" alt="Loiro personalizado">
+        </div>
+        <div class="service-body">
+          <h3>Loiro Personalizado</h3>
+          <p>Planejamento de cor de acordo com histórico, tom desejado e condição dos fios.</p>
+          <button class="service-book" data-service="Loiro Personalizado">AGENDAR →</button>
+        </div>
+      </article>
+
+      <article class="service reveal">
+        <div class="service-media">
+          <img src="https://images.unsplash.com/photo-1605980776566-0486c3ac7617?auto=format&fit=crop&w=900&q=88" alt="Iluminação">
+        </div>
+        <div class="service-body">
+          <h3>Iluminação</h3>
+          <p>Luz, contraste e profundidade para um resultado sofisticado e natural.</p>
+          <button class="service-book" data-service="Iluminação / Morena Iluminada">AGENDAR →</button>
+        </div>
+      </article>
+
+      <article class="service reveal">
+        <div class="service-media">
+          <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=900&q=88" alt="Tratamento capilar">
+        </div>
+        <div class="service-body">
+          <h3>Tratamento Capilar</h3>
+          <p>Protocolos de cuidado para recuperar brilho, maciez e aparência saudável.</p>
+          <button class="service-book" data-service="Tratamento Capilar">AGENDAR →</button>
+        </div>
+      </article>
+
+      <article class="service reveal">
+        <div class="service-media">
+          <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=900&q=88" alt="Corte e finalização">
+        </div>
+        <div class="service-body">
+          <h3>Corte & Finalização</h3>
+          <p>Movimento, formato e acabamento para completar o resultado.</p>
+          <button class="service-book" data-service="Corte & Finalização">AGENDAR →</button>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="feature reveal">
+  <div class="feature-content">
+    <span class="eyebrow" style="color:#e1c097">Especialidade</span>
+    <h2>Seu loiro não precisa parecer com o de ninguém.</h2>
+    <p>O melhor resultado é aquele que combina com você. Por isso, cor, contraste e acabamento são planejados de forma personalizada.</p>
+    <button class="btn btn-light js-open-booking">QUERO AGENDAR →</button>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="head reveal">
+      <div>
+        <span class="eyebrow">Experiência</span>
+        <h2>Do primeiro contato ao resultado.</h2>
+      </div>
+      <p>Um processo simples para que a cliente saiba o que esperar antes mesmo de chegar ao Studio.</p>
+    </div>
+
+    <div class="process-grid">
+      <div class="step reveal"><div class="step-number">01</div><h3>Escolha</h3><p>Selecione o serviço que deseja realizar.</p></div>
+      <div class="step reveal"><div class="step-number">02</div><h3>Data</h3><p>Escolha um dos próximos dias disponíveis.</p></div>
+      <div class="step reveal"><div class="step-number">03</div><h3>Horário</h3><p>Selecione o melhor horário para você.</p></div>
+      <div class="step reveal"><div class="step-number">04</div><h3>Confirmação</h3><p>Envie sua solicitação e aguarde a confirmação pelo WhatsApp.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="resultados">
+  <div class="wrap">
+    <div class="head reveal">
+      <div>
+        <span class="eyebrow">Resultados</span>
+        <h2>Detalhes que fazem diferença.</h2>
+      </div>
+      <p>Uma área editorial preparada para receber fotos reais dos trabalhos do Studio Linda's.</p>
+    </div>
+
+    <div class="gallery">
+      <div class="gallery-item reveal">
+        <img src="https://images.unsplash.com/photo-1595475884562-073c30d45670?auto=format&fit=crop&w=1300&q=90" alt="Resultado de cabelo">
+        <span class="gallery-label">LOIRO PERSONALIZADO</span>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=900&q=88" alt="Resultado de iluminação">
+        <span class="gallery-label">ILUMINAÇÃO</span>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=900&q=88" alt="Cabelo loiro">
+        <span class="gallery-label">ACABAMENTO</span>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=900&q=88" alt="Atendimento de beleza">
+        <span class="gallery-label">CUIDADO</span>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=900&q=88" alt="Tratamento capilar">
+        <span class="gallery-label">TRATAMENTO</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section booking" id="agendamento">
+  <div class="wrap booking-grid">
+    <div class="booking-copy reveal">
+      <span class="eyebrow">Agendamento online</span>
+      <h2>Seu próximo horário começa aqui.</h2>
+      <p>Preencha seus dados e escolha serviço, data e horário. A solicitação segue pronta para o WhatsApp do Studio.</p>
+
+      <div class="booking-mini">
+        <div><strong>Rápido</strong><span>Sem troca de várias mensagens.</span></div>
+        <div><strong>Direto</strong><span>O pedido chega organizado no WhatsApp.</span></div>
+      </div>
+    </div>
+
+    <div class="booking-card reveal">
+      <h3>Agende seu atendimento</h3>
+      <p>Comece com seus dados e escolha o serviço desejado.</p>
+
+      <div class="field">
+        <label>Serviço</label>
+        <select class="select" id="quickService">
+          <option>Loiro Personalizado</option>
+          <option>Iluminação / Morena Iluminada</option>
+          <option>Tratamento Capilar</option>
+          <option>Corte & Finalização</option>
+          <option>Outro serviço</option>
+        </select>
+      </div>
+
+      <div class="two">
+        <div class="field"><label>Nome</label><input class="input" id="quickName" placeholder="Seu nome"></div>
+        <div class="field"><label>Seu WhatsApp</label><input class="input" id="quickPhone" placeholder="(11) 99999-9999"></div>
+      </div>
+
+      <button class="btn btn-dark" style="width:100%" id="quickStart">ESCOLHER DATA E HORÁRIO →</button>
+      <div class="note">O horário é confirmado pelo Studio após o envio da solicitação.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contato">
+  <div class="wrap">
+    <div class="contact-grid reveal">
+      <div class="contact-copy">
+        <span class="eyebrow">Contato</span>
+        <h2 data-brand>Studio Linda's</h2>
+        <p>Fale com o Studio ou solicite seu próximo horário.</p>
+
+        <div class="contact-row"><small>WhatsApp</small><strong>(11) 98536-7418</strong></div>
+        <div class="contact-row"><small>Endereço</small><strong><span data-address>Endereço do Studio</span> · <span data-city>São Paulo, SP</span></strong></div>
+        <div class="contact-row"><small>Instagram</small><strong id="instagramText">Instagram do Studio</strong></div>
+
+        <div class="hero-actions">
+          <button class="btn btn-dark js-open-booking">AGENDAR HORÁRIO</button>
+          <a class="btn btn-light" id="mapLink" target="_blank" rel="noopener">VER NO MAPA</a>
+        </div>
+      </div>
+
+      <div class="map"><div class="map-pin"></div></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a href="#inicio" class="brand">
+          <span class="brand-mark">SL</span>
+          <span class="brand-name" style="color:white" data-brand>Studio Linda's</span>
+        </a>
+        <p>Especialista em loiras, cor, cuidado e beleza personalizada.</p>
+      </div>
+      <div>
+        <h4>Navegação</h4>
+        <a href="#sobre">Sobre</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#resultados">Resultados</a>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <a id="footerWa">WhatsApp</a>
+        <a id="instagramLink">Instagram</a>
+        <span data-city>São Paulo, SP</span>
+      </div>
+      <div>
+        <h4>Agendamento</h4>
+        <span>Solicitação pelo site</span>
+        <span>Confirmação via WhatsApp</span>
+      </div>
+    </div>
+
+    <div class="footer-bottom">Conteúdo ilustrativo para demonstração.</div>
+  </div>
+</footer>
+
+<a class="float-wa" id="floatWa" aria-label="WhatsApp">✆</a>
+
+<!-- Modal de agendamento -->
+<div class="modal" id="bookingModal">
+  <div class="modal-card">
+    <div class="modal-head">
+      <div>
+        <span class="eyebrow">Agendamento</span>
+        <h3>Escolha seu horário</h3>
+      </div>
+      <button class="close" id="closeModal" aria-label="Fechar">✕</button>
+    </div>
+
+    <div class="two">
+      <div class="field">
+        <label>Nome</label>
+        <input class="input" id="clientName" placeholder="Seu nome">
+      </div>
+      <div class="field">
+        <label>Seu WhatsApp</label>
+        <input class="input" id="clientPhone" placeholder="(11) 99999-9999">
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Serviço</label>
+      <select class="select" id="serviceSelect">
+        <option>Loiro Personalizado</option>
+        <option>Iluminação / Morena Iluminada</option>
+        <option>Tratamento Capilar</option>
+        <option>Corte & Finalização</option>
+        <option>Outro serviço</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>Escolha o dia</label>
+      <div class="days" id="days"></div>
+    </div>
+
+    <div class="field">
+      <label>Horário</label>
+      <div class="slots" id="slots"></div>
+    </div>
+
+    <div class="summary" id="summary">
+      Escolha serviço, dia e horário para montar sua solicitação.
+    </div>
+
+    <button class="btn btn-dark" style="width:100%" id="sendBooking">ENVIAR PEDIDO PELO WHATSAPP →</button>
+    <div class="note">O horário só fica confirmado após o retorno do Studio pelo WhatsApp.</div>
+  </div>
+</div>
+
+<script>
+const params = new URLSearchParams(location.search);
+
+const cfg = {
+  brand: params.get("nome") || "Studio Linda's",
+  city: params.get("cidade") || "São Paulo, SP",
+  address: params.get("endereco") || "Endereço do Studio",
+  whatsapp: (params.get("whatsapp") || "5511985367418").replace(/\D/g,""),
+  instagram: (params.get("instagram") || "").replace(/^@/,"")
+};
+
+document.title = cfg.brand + " | Especialista em Loiras";
+document.querySelectorAll("[data-brand]").forEach(el => el.textContent = cfg.brand);
+document.querySelectorAll("[data-city]").forEach(el => el.textContent = cfg.city);
+document.querySelectorAll("[data-address]").forEach(el => el.textContent = cfg.address);
+
+const waUrl = (message) => `https://wa.me/${cfg.whatsapp}?text=${encodeURIComponent(message)}`;
+
+const floatWa = document.getElementById("floatWa");
+const footerWa = document.getElementById("footerWa");
+
+floatWa.href = waUrl(`Olá! Vi o site do ${cfg.brand} e gostaria de agendar um horário.`);
+floatWa.target = "_blank";
+floatWa.rel = "noopener";
+
+footerWa.href = waUrl(`Olá! Gostaria de falar com o ${cfg.brand}.`);
+footerWa.target = "_blank";
+footerWa.rel = "noopener";
+
+const instagramText = document.getElementById("instagramText");
+const instagramLink = document.getElementById("instagramLink");
+
+if(cfg.instagram){
+  const handle = cfg.instagram
+    .replace(/^https?:\/\/(www\.)?instagram\.com\//i,"")
+    .replace(/\/.*$/,"");
+  instagramText.textContent = "@" + handle;
+  instagramLink.textContent = "@" + handle;
+  instagramLink.href = "https://instagram.com/" + handle;
+  instagramLink.target = "_blank";
+  instagramLink.rel = "noopener";
+}else{
+  instagramText.textContent = "Instagram do Studio";
+  instagramLink.textContent = "Instagram";
+}
+
+document.getElementById("mapLink").href =
+  "https://www.google.com/maps/search/?api=1&query=" +
+  encodeURIComponent(cfg.address + ", " + cfg.city);
+
+/* Header / mobile */
+const header = document.getElementById("header");
+const menuBtn = document.getElementById("menuBtn");
+const mobileMenu = document.getElementById("mobileMenu");
+
+window.addEventListener("scroll",()=>header.classList.toggle("scrolled",scrollY>20));
+
+menuBtn.addEventListener("click",()=>{
+  const open = mobileMenu.classList.toggle("open");
+  menuBtn.textContent = open ? "✕" : "☰";
+});
+
+mobileMenu.querySelectorAll("a,button").forEach(el=>{
+  el.addEventListener("click",()=>{
+    mobileMenu.classList.remove("open");
+    menuBtn.textContent = "☰";
+  });
+});
+
+/* Booking */
+const bookingModal = document.getElementById("bookingModal");
+const closeModal = document.getElementById("closeModal");
+const clientName = document.getElementById("clientName");
+const clientPhone = document.getElementById("clientPhone");
+const serviceSelect = document.getElementById("serviceSelect");
+const daysRoot = document.getElementById("days");
+const slotsRoot = document.getElementById("slots");
+const summary = document.getElementById("summary");
+const sendBooking = document.getElementById("sendBooking");
+
+let selectedDateLabel = "";
+let selectedTime = "";
+
+function buildDays(){
+  daysRoot.innerHTML = "";
+  selectedDateLabel = "";
+  const weekdays = ["dom","seg","ter","qua","qui","sex","sáb"];
+  let count = 0;
+
+  for(let i=1;i<=14 && count<5;i++){
+    const d = new Date();
+    d.setDate(d.getDate()+i);
+
+    if(d.getDay()===0) continue;
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "day";
+
+    const day = String(d.getDate()).padStart(2,"0");
+    const month = String(d.getMonth()+1).padStart(2,"0");
+
+    button.innerHTML = `<small>${weekdays[d.getDay()]}</small><strong>${day}/${month}</strong>`;
+
+    button.addEventListener("click",()=>{
+      document.querySelectorAll(".day").forEach(el=>el.classList.remove("active"));
+      button.classList.add("active");
+      selectedDateLabel = `${day}/${month}/${d.getFullYear()}`;
+      updateSummary();
+    });
+
+    daysRoot.appendChild(button);
+    count++;
+  }
+}
+
+function buildSlots(){
+  slotsRoot.innerHTML = "";
+  selectedTime = "";
+
+  ["09:00","10:30","12:00","14:00","15:30","17:00","18:30"].forEach(time=>{
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "slot";
+    button.textContent = time;
+
+    button.addEventListener("click",()=>{
+      document.querySelectorAll(".slot").forEach(el=>el.classList.remove("active"));
+      button.classList.add("active");
+      selectedTime = time;
+      updateSummary();
+    });
+
+    slotsRoot.appendChild(button);
+  });
+}
+
+function updateSummary(){
+  summary.innerHTML = `
+    <strong>Resumo:</strong><br>
+    Serviço: ${serviceSelect.value}<br>
+    Data: ${selectedDateLabel || "escolha um dia"}<br>
+    Horário: ${selectedTime || "escolha um horário"}
+  `;
+}
+
+function openBooking(service){
+  if(service) serviceSelect.value = service;
+  buildDays();
+  buildSlots();
+  updateSummary();
+  bookingModal.classList.add("open");
+  document.body.classList.add("lock");
+}
+
+function closeBooking(){
+  bookingModal.classList.remove("open");
+  document.body.classList.remove("lock");
+}
+
+document.querySelectorAll(".js-open-booking").forEach(button=>{
+  button.addEventListener("click",()=>openBooking());
+});
+
+document.querySelectorAll(".service-book").forEach(button=>{
+  button.addEventListener("click",()=>openBooking(button.dataset.service));
+});
+
+closeModal.addEventListener("click",closeBooking);
+bookingModal.addEventListener("click",(event)=>{
+  if(event.target===bookingModal) closeBooking();
+});
+
+serviceSelect.addEventListener("change",updateSummary);
+
+document.getElementById("quickStart").addEventListener("click",()=>{
+  clientName.value = document.getElementById("quickName").value.trim();
+  clientPhone.value = document.getElementById("quickPhone").value.trim();
+  serviceSelect.value = document.getElementById("quickService").value;
+  openBooking(serviceSelect.value);
+});
+
+sendBooking.addEventListener("click",()=>{
+  const name = clientName.value.trim();
+  const phone = clientPhone.value.trim();
+
+  if(!name){
+    alert("Digite seu nome para continuar.");
+    clientName.focus();
+    return;
+  }
+
+  if(!selectedDateLabel){
+    alert("Escolha uma data.");
+    return;
+  }
+
+  if(!selectedTime){
+    alert("Escolha um horário.");
+    return;
+  }
+
+  const message =
+`Olá! Gostaria de solicitar um agendamento no ${cfg.brand}.
+
+Nome: ${name}
+Meu WhatsApp: ${phone || "não informado"}
+Serviço: ${serviceSelect.value}
+Data desejada: ${selectedDateLabel}
+Horário desejado: ${selectedTime}
+
+Pode me confirmar a disponibilidade?`;
+
+  window.open(waUrl(message),"_blank","noopener");
+});
+
+/* Reveal */
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:.1});
+
+document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+</script>
+
+</body>
+</html>
